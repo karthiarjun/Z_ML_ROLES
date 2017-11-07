@@ -16,7 +16,7 @@ from flask import make_response
 app = Flask(__name__)
 
 #Main Declaration
-@app.route('/train',methods=['GET'])
+@app.route('/train',methods=['POST'])
 def train():
 		filename_features = 'features.csv'
 		features=loadCSV_features(filename_features)
