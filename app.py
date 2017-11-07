@@ -6,7 +6,7 @@ from flask import Flask, request, jsonify
 app = Flask(__name__)
 
 #Main Declaration
-@app.route('/train')
+@app.route('/train',methods=['GET'])
 def train():
 		filename_features = 'features.csv'
 		features=loadCSV_features(filename_features)
@@ -18,7 +18,7 @@ def train():
 
 		clf=tree.DecisionTreeClassifier()
 		clf=clf.fit(features,label)
-		input=[[5.2,5,11.1,11]]
+		input=[[115.2,115,111.1,111]]
 		out=clf.predict(input) #Pass the required Testing Data as a List
 		result= out[0]
 		#print(result)
