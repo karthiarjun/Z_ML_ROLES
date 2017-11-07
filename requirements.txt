@@ -3,3 +3,4 @@ numpy==1.10.4
 pandas==0.17.1
 scikit-learn==0.17
 future==0.16.0
+SciPy==0.13.3
