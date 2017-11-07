@@ -22,7 +22,14 @@ def train():
 		out=clf.predict(input) #Pass the required Testing Data as a List
 		result= out[0]
 		#print(result)
-		return result
+		#return result
+		return {
+			"speech": result,
+			"displayText": result,
+			# "data": data,
+			# "contextOut": [],
+			"source": "apiai-weather-webhook-sample"
+			}
 
 #Load Features Dataset
 def loadCSV_features(filename_features):
