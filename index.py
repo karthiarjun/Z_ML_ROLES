@@ -11,11 +11,11 @@ def train():
 		filename_features = 'features.csv'
 		features=loadCSV_features(filename_features)
 		filename_label = 'label.csv'
-		label = loadCSV_label(filename_label) 
+		label = loadCSV_label(filename_label)
 		X=features
 		label=np.array(label)
 		y=np.ravel(label)
-		
+
 		clf=tree.DecisionTreeClassifier()
 		clf=clf.fit(features,label)
 		input=[[114.2,115,119.1,1112]]
@@ -23,7 +23,7 @@ def train():
 		result= out[0]
 		print(result)
 		return {"result": result, "status" : "success"}
-	
+
 #Load Features Dataset
 def loadCSV_features(filename_features):
 	lines = csv.reader(open(filename_features, "r"))
@@ -45,4 +45,4 @@ def loadCSV_label(filename_label):
 if __name__ == '__main__':
 	port = int(os.getenv('PORT', 5000))
 	print("Starting app on port %d" % port)
-	app.run(host='0.0.0.0', port=port, debug=True)
+	app.run(host='0.0.0.0', port=port, debug=False)
