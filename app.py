@@ -16,7 +16,7 @@ from flask import make_response
 app = Flask(__name__)
 
 #Main Declaration
-@app.route('/train',methods=['POST'])
+@app.route('/train',methods=['GET'])
 def train():
 		filename_features = 'features.csv'
 		features=loadCSV_features(filename_features)
@@ -33,7 +33,7 @@ def train():
 		result= out[0]
 		#print(result)
 		#return result
-		res = json.dumps({"speech": result,"displayText": result,"source": "apiai-weather-webhook-sample"}, indent=4)# print(res)
+		res = json.dumps({"speech": result,"displayText": result,"source": "apiai-zmlroles-train-sample"}, indent=4)# print(res)
 		r = make_response(res)
 		r.headers['Content-Type'] = 'application/json'
 		return r
