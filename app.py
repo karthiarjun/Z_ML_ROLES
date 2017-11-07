@@ -12,6 +12,7 @@ import os
 import numpy as np
 from sklearn import tree
 from flask import Flask, request, jsonify
+from flask import make_response
 app = Flask(__name__)
 
 #Main Declaration
@@ -33,9 +34,9 @@ def train():
 		#print(result)
 		#return result
 		res = json.dumps({"speech": result,"displayText": result,"source": "apiai-weather-webhook-sample"}, indent=4)# print(res)
-                #r = make_response(res)
+		r = make_response(res)
                 #r.headers['Content-Type'] = 'application/json'
-		return res
+		return r
 #Load Features Dataset
 def loadCSV_features(filename_features):
 	lines = csv.reader(open(filename_features, "r"))
