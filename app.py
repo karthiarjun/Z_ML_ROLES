@@ -1,3 +1,13 @@
+from __future__ import print_function
+from future.standard_library import install_aliases
+install_aliases()
+
+from urllib.parse import urlparse, urlencode
+from urllib.request import urlopen, Request
+from urllib.error import HTTPError
+
+import json
+
 import csv
 import os
 import numpy as np
@@ -23,14 +33,11 @@ def train():
 		result= out[0]
 		#print(result)
 		#return result
-		return {
-			"speech": result,
-			"displayText": result,
-			# "data": data,
-			# "contextOut": [],
-			"source": "apiai-weather-webhook-sample"
-			}
-
+                res = json.dumps({"speech": result,"displayText": result,"source": "apiai-weather-webhook-sample"}, indent=4)
+# print(res)
+                r = make_response(res)
+                r.headers['Content-Type'] = 'application/json'
+                return r
 #Load Features Dataset
 def loadCSV_features(filename_features):
 	lines = csv.reader(open(filename_features, "r"))
