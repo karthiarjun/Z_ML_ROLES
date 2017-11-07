@@ -1,13 +1,12 @@
-from __future__ import print_function
-from future.standard_library import install_aliases
-install_aliases()
+#from __future__ import print_function
+#from future.standard_library import install_aliases
+#install_aliases()
 
-from urllib.parse import urlparse, urlencode
-from urllib.request import urlopen, Request
-from urllib.error import HTTPError
+#from urllib.parse import urlparse, urlencode
+#from urllib.request import urlopen, Request
+#from urllib.error import HTTPError
 
 import json
-
 import csv
 import os
 import numpy as np
