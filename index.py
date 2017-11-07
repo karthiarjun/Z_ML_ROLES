@@ -38,7 +38,7 @@ def loadCSV_label(filename_label):
 	dataset_label = list(lines)
 	for i in range(len(dataset_label)):
 		dataset_label[i] = [(x) for x in dataset_label[i]]
-	return dataset_label
+	return dataset_label 
 
 
 
