@@ -35,7 +35,7 @@ def train():
 		#return result
 		res = json.dumps({"speech": result,"displayText": result,"source": "apiai-weather-webhook-sample"}, indent=4)# print(res)
 		r = make_response(res)
-                #r.headers['Content-Type'] = 'application/json'
+		r.headers['Content-Type'] = 'application/json'
 		return r
 #Load Features Dataset
 def loadCSV_features(filename_features):
