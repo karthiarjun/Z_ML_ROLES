@@ -32,12 +32,12 @@ def train():
 		out=clf.predict(input) #Pass the required Testing Data as a List
 		result= out[0]
 		#print(result)
-		#return result
-                res = json.dumps({"speech": result,"displayText": result,"source": "apiai-weather-webhook-sample"}, indent=4)
+		return result
+                #res = json.dumps({"speech": result,"displayText": result,"source": "apiai-weather-webhook-sample"}, indent=4)
 # print(res)
-                r = make_response(res)
-                r.headers['Content-Type'] = 'application/json'
-                return r
+                #r = make_response(res)
+                #r.headers['Content-Type'] = 'application/json'
+                #return r
 #Load Features Dataset
 def loadCSV_features(filename_features):
 	lines = csv.reader(open(filename_features, "r"))
