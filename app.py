@@ -54,18 +54,7 @@ def processRequest(req):
 		result = req.get("result")
 		parameters = result.get("parameters")
 		role = parameters.get("roles")
-		if(role == "fiori"):
-			return [[5,5,10.1,10]]
-		elif(role == "abap"):
-			return [[11.2,10,5.1,5]]
-		elif(role == "basis"):
-			return [[15.2,10,5.1,5]]
-		elif(role == "super admin"):
-			return [[20.2,20,5.1,5]]
-		elif(role == "security"):
-			return [[10.2,10,20,20]]
-		return [[20.2,20,20.1,20]]
-
+		return [role]
 
 
 #Load Features Dataset

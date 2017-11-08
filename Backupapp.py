@@ -18,6 +18,12 @@ port = int(os.getenv("PORT", 9009))
 #Main Declaration
 @app.route('/train',methods=['POST'])
 def train():
+		req = request.get_json(silent=True, force=True)
+		print("Request:")
+		print(json.dumps(req,indent=4))
+		processReq = processRequest(req)
+		#input=[[115.2,115,111.1,111]]
+		input = processReq
 		filename_features = 'features.csv'
 		features=loadCSV_features(filename_features)
 		filename_label = 'label.csv'
@@ -28,7 +34,6 @@ def train():
 
 		clf=tree.DecisionTreeClassifier()
 		clf=clf.fit(features,label)
-		input=[[115.2,115,111.1,111]]
 		out=clf.predict(input) #Pass the required Testing Data as a List
 		result= out[0]
 		#print(result)
@@ -41,6 +46,28 @@ def train():
 		r = make_response(res)
 		r.headers['Content-Type'] = 'application/json'
 		return r
+
+#processRequestFromChatBOT
+def processRequest(req):
+		if req.get("result").get("action") != "SAPAction":
+			return {}
+		result = req.get("result")
+		parameters = result.get("parameters")
+		role = parameters.get("roles")
+		if(role == "fiori"):
+			return [[5,5,10.1,10]]
+		elif(role == "abap"):
+			return [[11.2,10,5.1,5]]
+		elif(role == "basis"):
+			return [[15.2,10,5.1,5]]
+		elif(role == "super admin"):
+			return [[20.2,20,5.1,5]]
+		elif(role == "security"):
+			return [[10.2,10,20,20]]
+		return [[20.2,20,20.1,20]]
+
+
+
 #Load Features Dataset
 def loadCSV_features(filename_features):
 	lines = csv.reader(open(filename_features, "r"))
@@ -60,4 +87,4 @@ def loadCSV_label(filename_label):
 
 
 if __name__ == '__main__':
-    app.run(host='127.0.0.2', port=port)
+    app.run(host='0.0.0.0', port=port)
