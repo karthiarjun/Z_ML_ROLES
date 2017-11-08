@@ -1,0 +1,6 @@
+---
+applications:
+- name: Z_ML_ROLES
+  memory: 128M
+  command: python app.py
+  buildpack: https://github.com/cloudfoundry/buildpack-python.git
