@@ -54,7 +54,8 @@ def processRequest(req):
 		result = req.get("result")
 		parameters = result.get("parameters")
 		role = parameters.get("roles")
-		return [role]
+		ques = parameters.get("ques")
+		return [[role,ques]]
 
 
 #Load Features Dataset
